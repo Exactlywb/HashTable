@@ -52,7 +52,8 @@ So _CRC32_ and _Murmur_ show the best results, thus we will optimize our code wi
 
 Firstly we have to look into _callgrind_ and find the most time-consuming functions and consequently we should try to fix them.
 
-//картинка сюда
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/firstPics/withoutOpt.PNG"        width = "600"></center>
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/firstPics/withoutOptKcache.PNG"  width = "600"></center>
 
 As we can see the slowest is _malloc_, _FillTable_, _PushTable_ and our _CRC32_ hash. After a long fight between angel and demon on my shoulders I decided that I'm not a superman. That's why I won't rewrite _malloc_ function, but I'll apply the trick. It's known that working with memory always needs much time due to many reasons, but we'll win time by allocating large pieces of memory! Let's look at our function
 
@@ -152,7 +153,7 @@ void HashTableConstructor (HashTable* hashTable, size_t size, unsigned int (*has
 
 Let's check our turbo acceleration:
 
-//картинка
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/secondPocs/hashCalloc.PNG" width = "600"></center>
 
 A bit faster. Let's continue and realize the same method with allocation for _Dictionary*_. This structure appears when we're reading our file. Here you can see the function we'll optimize:
 
@@ -260,7 +261,7 @@ Dictionary* BuildDictionary (const char* file) {
 
 Eventually, the optimization we got:
 
-//картинка сюда
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/secondPocs/dictionaryCalloc.PNG" width = "600"></center>
 
 Optimization with allocation of large memory is a bit more benefitial, but it doesn't provide required result. It may be just a time filler's mistake. Let's take a more complicated task and optimize our _CRC32_. The old code with _CRC32_:
 
@@ -309,7 +310,8 @@ unsigned int CRC32 (Line* string) {
 
 Let's count our acceleration:
 
-//картинка сюда
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/thirdPics/CRCtime.PNG"   width = "600"></center>
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/thirdPics/CRCKcache.PNG" width = "600"></center>
 
 _God bless Intel_
 
@@ -337,6 +339,9 @@ int LineCmp (Line* firstLine, Line* secondLine) {
 
 }
 ```
+I have to say that it isn't so fast:
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/NoOptTime.PNG"   width = "600"></center>
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/NoOptKcache.PNG" width = "600"></center>
 
 Let's use _SSE_:
 
@@ -375,6 +380,7 @@ int LineCmp (Line* firstLine, Line* secondLine) {
 
 Thus it provides some benefit:
 
-//картинка
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/YesOptTime.PNG" width = "600"></center>
+<center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/YesOptKcache.PNG" width = "600"></center>
 
-<center><img src = "https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.gta.ru%2Fforums%2Fgta_san_andreas%2Ftalk%2Fboltalka_gta_ru-787942%2F&psig=AOvVaw0eRMHndZmrSJOQ-Yy4zCsi&ust=1618060106528000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMD2uOWd8e8CFQAAAAAdAAAAABAO" width = "200"></center>
+<center><img src = "https://gtaguide.net/wp-content/uploads/jobs-in-gta-online-5-1.jpg" width = "400"></center>
