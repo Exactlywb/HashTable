@@ -313,7 +313,7 @@ int LineCmp (Line* firstLine, Line* secondLine) {
             firstStr  = _mm_loadu_si128 ((__m128i*)(firstLine->_str + startSymb));
             secondStr = _mm_loadu_si128 ((__m128i*)(secondLine->_str + startSymb));
 
-            cmpResult = _mm_cmpestri    (firstStr, 16, secondStr, 16, _SIDD_CMP_EQUAL_EACH);
+            cmpResult = _mm_cmpestri    (firstStr, firstLine->_length - startSymb > 16 ? 16 : (firstLine->_length - startSymb), secondStr, secondLine->_length - startSymb > 16 ? 16 : (secondLine->_length - startSymb), _SIDD_CMP_EQUAL_EACH);
 
             if (cmpResult != 0)
                 break;
