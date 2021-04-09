@@ -63,12 +63,6 @@ void HashTableConstructor (HashTable* hashTable, size_t size, unsigned int (*has
     hashTable->_size = size;
 
     TABLE_DATA = (List**)calloc (size, sizeof (List*));
-    if (!TABLE_DATA) {
-
-        PRINT_ERR ("Bad memory: can not do calloc for __data");
-        return;
-
-    }
 
     for (size_t listNum = 0; listNum < size; listNum++) {
 
