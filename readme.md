@@ -60,19 +60,6 @@ As we can see the slowest is _malloc_, _FillTable_, _PushTable_ and our _CRC32_ 
 ```cpp
 void HashTableConstructor (HashTable* hashTable, size_t size, unsigned int (*hash) (Line* string), const char* csvFileName) {
 
-    if (!hashTable) {
-
-        PRINT_ERR ("Null pointer on HashTable* hashTable");
-        return;
-            
-    }
-    if (!*hash) {
-
-        PRINT_ERR ("No function unsigned int (*hash)");
-        return;
-
-    }
-
     hashTable->_size = size;
 
     TABLE_DATA = (List**)calloc (size, sizeof (List*));
@@ -104,36 +91,15 @@ New code:
 ```cpp
 List* CallocForLists (List* memory, size_t index) {
 
-    assert (memory);
-
     return (memory + index);
 
 }
 
 void HashTableConstructor (HashTable* hashTable, size_t size, unsigned int (*hash) (Line* string), const char* csvFileName) {
 
-    if (!hashTable) {
-
-        PRINT_ERR ("Null pointer on HashTable* hashTable");
-        return;
-            
-    }
-    if (!*hash) {
-
-        PRINT_ERR ("No function unsigned int (*hash)");
-        return;
-
-    }
-
     hashTable->_size = size;
 
     TABLE_DATA = (List**)calloc (size, sizeof (List*));
-    if (!TABLE_DATA) {
-
-        PRINT_ERR ("Bad memory: can not do calloc for __data");
-        return;
-
-    }
 
     List* bigMemory = (List*)calloc (size, sizeof (List));
 
@@ -162,7 +128,6 @@ A bit faster. Let's continue and realize the same method with allocation for _Di
 Dictionary* BuildDictionary (const char* file) {
 
     FILE* readFile = fopen (file, "r");
-    assert (readFile);
 
     size_t filesize = GetFileSize (readFile);
     char* buffer    = ReadBuffer  (readFile, filesize);
@@ -209,8 +174,6 @@ And then we get:
 
 Line* CallocForLine (Line* bigMemory, size_t index) {
 
-    assert (bigMemory);
-
     return (bigMemory + index);
 
 }
@@ -218,7 +181,6 @@ Line* CallocForLine (Line* bigMemory, size_t index) {
 Dictionary* BuildDictionary (const char* file) {
 
     FILE* readFile = fopen (file, "r");
-    assert (readFile);
 
     size_t filesize = GetFileSize (readFile);
     char* buffer    = ReadBuffer  (readFile, filesize);
@@ -320,9 +282,6 @@ Some of our functions are still not used.  I,surely, can try to optimize all of 
 ```cpp
 int LineCmp (Line* firstLine, Line* secondLine) {
 
-    assert (firstLine);
-    assert (secondLine);
-
     if (firstLine->_length == secondLine->_length) {
 
         for (size_t symb = 0; symb < firstLine->_length; symb++) {
@@ -347,9 +306,6 @@ Let's use _SSE_:
 
 ```cpp
 int LineCmp (Line* firstLine, Line* secondLine) {
-
-    assert (firstLine);
-    assert (secondLine);
 
     int cmpResult         = 0;
 
