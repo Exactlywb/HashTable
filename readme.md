@@ -8,9 +8,9 @@
 
 ## Hash table realization
 
-My hash table uses the chain method in dealing with collisions. More about chain method you may see on [wikipedia](https://en.wikipedia.org/wiki/Hash_table) or in short paragraph about it in my [_LaTex_](https://github.com/Exactlywb/HashTable/blob/master/HashFunctions.pdf) report. 
+My hash table uses the chain method to deal with collisions. More unformation about chain method you may see on [wikipedia](https://en.wikipedia.org/wiki/Hash_table) or in short paragraph about it in my [_LaTex_](https://github.com/Exactlywb/HashTable/blob/master/HashFunctions.pdf) report. 
 
-You may see my unoptimized version of hash table [here](https://github.com/Exactlywb/HashTable/tree/master/unoptimized).
+You may see the unoptimized version of hash table [here](https://github.com/Exactlywb/HashTable/tree/master/unoptimized).
 
 ## Hash functions research
 
@@ -34,11 +34,11 @@ In this part of work I realized 7 hash functions:
 
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/optimized/csv/firstSymb.png" width = "400"></center>
 
-* ### _ROR hash_  uses ROR to count hash. It's the first real hash, so it's better to show the result.
+* ### _ROR hash_  uses ROR to count hash. It's the first real hash, so it's interesting to have a loot at the result.
 
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/optimized/csv/RORHash.png" width = "400"></center>
 
-* ### _Murmur2A hash_ is realization of famous hash function that is slower than standart _Murmur_ for 30-40% but it leaves less collisions.
+* ### _Murmur2A hash_ is realization of famous hash function that is slower than standart _Murmur_ for 30-40%, but, however, it leaves less collisions.
 
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/optimized/csv/MurmurHash2A.png" width = "400"></center>
 
@@ -50,7 +50,7 @@ So _CRC32_ and _Murmur_ show the best results, thus we will optimize our code wi
 
 ## Optimization
 
-Firstly we have to look into _callgrind_ and find the most time consuming functions and then we should try to fix them.
+Firstly we have to look into _callgrind_ and find the most time-consuming functions and consequently we should try to fix them.
 
 //картинка сюда
 
@@ -96,7 +96,7 @@ void HashTableConstructor (HashTable* hashTable, size_t size, unsigned int (*has
 }
 ```
 
-So it doesn't look smart: each time in cicle we allocate memory by little pieces and _malloc_ constantly has to start a search for us. It would be better if we allocate large memory one time and then just separate it. 
+The are some disadvantages in it: each time in cicle we allocate memory by little pieces and _malloc_ constantly has to start a search for us. It would be better if we allocate large memory one time and then just separate it. 
 
 New code:
 
@@ -154,7 +154,7 @@ Let's check our turbo acceleration:
 
 //картинка
 
-A bit faster. Let's continue and realize the same method with allocation for _Dictionary*_. This structure appears when we're reading our file. A function we'll optimize:
+A bit faster. Let's continue and realize the same method with allocation for _Dictionary*_. This structure appears when we're reading our file. Here you can see the function we'll optimize:
 
 ```cpp
 
@@ -258,11 +258,11 @@ Dictionary* BuildDictionary (const char* file) {
 
 ```
 
-So the optimization we got:
+Eventually, the optimization we got:
 
 //картинка сюда
 
-Optimization with allocation of large memory is a bit more benefitial, but it doesn't provide necessary result. It may be just a time filler's mistake. Let's take a more complicated problem and optimize our _CRC32_. The old code with _CRC32_:
+Optimization with allocation of large memory is a bit more benefitial, but it doesn't provide required result. It may be just a time filler's mistake. Let's take a more complicated task and optimize our _CRC32_. The old code with _CRC32_:
 
 ```cpp
 unsigned int CRC32 (Line* string) {
@@ -292,7 +292,7 @@ unsigned int CRC32 (Line* string) {
 }
 ```
 
-For optimization our hash function we'll use __mm_crc32_u8_ from SSE optimization. So the new code:
+To optimize our hash function we'll use __mm_crc32_u8__ from SSE optimization. So the new code:
 
 ```cpp
 unsigned int CRC32 (Line* string) {
@@ -313,7 +313,7 @@ Let's count our acceleration:
 
 _God bless Intel_
 
-Some of our functions are still not used. Of course I can try to optimize all of our functions but it looks useless for our project. Guided by this conclusion I decided to optimize one of the most useful functions _FindElemInTable_. I have to say that this function is not independence. _FindElemInTable_ calls _ListFindElem_ which is already optimized by _O2_ without my participation. But we can optimize _LineCmp_. We'll do it with _SSE_ tricks. Old code we had:
+Some of our functions are still not used.  I,surely, can try to optimize all of our functions but it looks useless for our project. Guided by this conclusion I decided to optimize one of the most useful functions _FindElemInTable_. I have to say that this function is not independent. _FindElemInTable_ calls _ListFindElem_ which has already been optimized by _O2_ without my participation. But we can optimize _LineCmp_. We'll do it with _SSE_ tricks. Old code we had:
 
 ```cpp
 int LineCmp (Line* firstLine, Line* secondLine) {
@@ -373,7 +373,7 @@ int LineCmp (Line* firstLine, Line* secondLine) {
 }
 ```
 
-So it gives little effect:
+Thus it provides some benefit:
 
 //картинка
 
