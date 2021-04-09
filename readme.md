@@ -339,4 +339,6 @@ Thus it provides some benefit:
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/YesOptTime.PNG" width = "600"></center>
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/YesOptKcache.PNG" width = "600"></center>
 
+Finally we got 75% optimization or in 4 times!
+
 <center><img src = "https://gtaguide.net/wp-content/uploads/jobs-in-gta-online-5-1.jpg" width = "400"></center>
