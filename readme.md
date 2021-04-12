@@ -2,11 +2,11 @@
 
 ## Task
 
-* Realize a hash table using the chaining method
+* Implement a hash table using the chaining method
 * Hash functions research
 * Analyze the slowest functions and optimize them.
 
-## Hash table realization
+## Hash table implementation
 
 My hash table uses the chain method to deal with collisions. More unformation about chain method you may see on [wikipedia](https://en.wikipedia.org/wiki/Hash_table) or in short paragraph about it in my [_LaTex_](https://github.com/Exactlywb/HashTable/blob/master/HashFunctions.pdf) report. 
 
@@ -38,7 +38,7 @@ In this part of work I realized 7 hash functions:
 
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/optimized/csv/RORHash.png" width = "400"></center>
 
-* ### _Murmur2A hash_ is realization of famous hash function that is slower than standart _Murmur_ for 30-40%, but, however, it leaves less collisions.
+* ### _Murmur2A hash_ is realization of famous hash function that is slower than standard _Murmur_ for 30-40%, but, however, it has less collisions.
 
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/optimized/csv/MurmurHash2A.png" width = "400"></center>
 
@@ -336,5 +336,7 @@ Thus it provides some benefit:
 <center><img src = "https://github.com/Exactlywb/HashTable/blob/master/screenshots/searchOpt/YesOptKcache.PNG" width = "600"></center>
 
 Finally we got 75% optimization or in 4 times!
+
+Ded coefficient = 1000 $
 
 <center><img src = "https://gtaguide.net/wp-content/uploads/jobs-in-gta-online-5-1.jpg" width = "400"></center>
