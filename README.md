@@ -3,7 +3,6 @@
 ## Table of contents
 
 - [The Hash Table](#the-hash-table)
-  - [Table of contents](#table-of-contents)
   - [Background](#background)
   - [The task](#the-task)
   - [Hash functions analysis](#hash-functions-analysis)
