@@ -14,7 +14,7 @@
 
 This work was handed out by [@ded32](https://github.com/ded32) as part of the "Computer Architecture" course held in MIPT. 
 
-## The task
+## The tasks
 
 * To implement the hash table using the chaining method.
 * To analyze hash functions.
