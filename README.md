@@ -95,10 +95,10 @@ _The CRC32_ and _the Murmur2A_ show the best results, thus we will optimize our 
 First, we have to look into the _callgrind_ and find the most time-consuming functions and we should try to fix them.
 
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/NoOptTime.png"/>
 </p>
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/NoOptCacheGrind.png"/>
 </p>
 
 As we can see, the slowest functions are _the CRC32_, _the FillTable_, _the PushTable_ and _the FindElemInTable_. Let's optimize _the CRC32 hash_ using intrinsics. The old code we had:
