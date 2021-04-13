@@ -324,7 +324,7 @@ This is 29% more optimized compared to the previous test! _God bless Intel twice
 
 ### Inference
 
-After all the steps taken, we reduced the program execution time from ~1.678s to ~0.200s (88% or in 8 times)! Ded's coefficient Dede = 1000 * 8 / 4 = 2000. An interesting fact: this is the salary per second that awaits a person who writes a good readme.
+After all the steps taken, we reduced the program execution time from ~1.678s to ~0.200s (88% or in 8 times) with O2! Ded's coefficient Dede = 1000 * 8 / 4 = 2000. An interesting fact: this is the salary per second that awaits a person who writes a good readme.
 
 ## Conclusion
 
