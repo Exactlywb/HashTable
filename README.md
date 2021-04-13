@@ -42,7 +42,7 @@ As we can see from the bar chart it isn't useful.
 
 It also is the useless function which has too many collisions.
 
-* _The ASCII sum hash_ which returns a sum of ASCII numbers of chars in string
+* _The ASCII sum hash_ which returns a sum of ASCII codes of chars in string
 
 <p align = "center">
   <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/asciiSum.png"/>
