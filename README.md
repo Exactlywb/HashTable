@@ -2,14 +2,13 @@
 
 ## Table of contents
 
-- [The Hash Table](#the-hash-table)
-  - [Background](#background)
-  - [The task](#the-task)
-  - [Hash functions analysis](#hash-functions-analysis)
-    - [Inference](#inference)
-  - [The optimization of the hash table](#the-optimization-of-the-hash-table)
-    - [Inference](#inference-1)
-  - [Conclusion](#conclusion)
+- [Background](#background)
+- [The task](#the-task)
+- [Hash functions analysis](#hash-functions-analysis)
+  - [Inference](#inference)
+- [The optimization of the hash table](#the-optimization-of-the-hash-table)
+  - [Inference](#inference-1)
+- [Conclusion](#conclusion)
 
 ## Background
 
@@ -17,15 +16,15 @@ This work was handed out by [@ded32](https://github.com/ded32) as part of the "C
 
 ## The task
 
-* The implementation of the hash table using the chaining method.
-* Hash functions analysis.
-* The optimization of the hash table.
+* To implement the hash table using the chaining method.
+* To analyze hash functions.
+* To optimize the hash table.
 
 ## Hash functions analysis
 
 > If you want to see the full report, you may look at [LaTex document](HashFunctions.pdf).
 
-In this part of work I have implemented seven hash functions and carried out the research.
+In this part of work I have implemented seven hash functions and carried out the research. We will explore the functions: _The hash which just returns 1_, _the length hash_, _the ASCII sum hash_, _the first symbol hash_, _the ROR hash_, _the Murmur2A hash_ and _the CRC32 hash_.
 
 * _The hash which just returns 1_
 
@@ -59,7 +58,7 @@ It may seem as an acceptable function but it's not true: it also has too many co
 
 This function is not beneficial as well.
 
-* _The ROR hash_ uses ROR to count hash. It's the first real hash, so it's interesting to have a look at the result
+* _The ROR hash_ uses ROR to count hash. It's the first useful hash, so it's interesting to have a look at the result
 
 <p align = "center">
   <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/RORHash.png"/>
@@ -73,7 +72,7 @@ This hash function is better than the previous functions. It has far less collis
   <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/MurmurHash2A.png"/>
 </p>
 
-From all of the analysed functions this one is the most efficient.
+From all of the functions analyzed this one is the most efficient.
 
 * _The CRC32 hash_ or _cyclic redundancy check_ is based on the theory of cyclic error-correcting codes
 
