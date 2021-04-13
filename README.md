@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [The Hash Table](#the-hash-table)
+  - [Table of contents](#table-of-contents)
   - [Background](#background)
   - [The task](#the-task)
   - [Hash functions analysis](#hash-functions-analysis)
@@ -13,7 +14,7 @@
 
 ## Background
 
-This work was handed out by [@ded32](google.com) as part of the "Computer Architecture" course held in MIPT. 
+This work was handed out by [@ded32](https://github.com/ded32) as part of the "Computer Architecture" course held in MIPT. 
 
 ## The task
 
@@ -23,7 +24,7 @@ This work was handed out by [@ded32](google.com) as part of the "Computer Archit
 
 ## Hash functions analysis
 
-> If you want to see the full report, you may look at [LaTex document](google.com).
+> If you want to see the full report, you may look at [LaTex document](HashFunctions.pdf).
 
 In this part of work I have implemented seven hash functions and carried out the research.
 
@@ -85,7 +86,7 @@ This one is as beneficial as _the Murmur2A hash_.
 
 ### Inference
 
-_The CRC32_ and _the Murmur2A_ show the best results, thus we will optimize our code with _the CRC32 hash_, because optimization of _the Murmur2A_ doesn't look so easy.
+_The CRC32_ and _the Murmur2A_ show the best results, however, the optimization of _the Murmur2A_ doesn't look so easy, thus we will optimize our code with _the CRC32 hash_.
 
 ## The optimization of the hash table
 
@@ -167,7 +168,7 @@ void PushTable (HashTable* hashTable, Line* linePointer) {
 }
 ```
 
-It is a simple function which just calls for two other's. One of them, _the CRC32 hash_ function, has already been optimized and the other one, _the NodeInit_ function, is slow mainly due to memory allocation. After a long fight between angel and demon on my shoulders I decided that I'm not a superman. That's why I won't try to speed up _the calloc_ function. 
+It is a simple function which just calls for the other two functions. One of them, _the CRC32 hash_ function, has already been optimized and the other one, _the NodeInit_ function, is slow mainly due to memory allocation. After a long fight between angel and demon on my shoulders I decided that I'm not a superman. That's why I won't try to speed up _the calloc_ function. 
 
 But I can try to implement the trick. It's known that working with memory always needs much time due to many reasons, but we'll win time by allocating large pieces of memory! Let's look at our function _the BuildDictionary_:
 
@@ -319,7 +320,7 @@ The new value of the run-time is:
   <img src="screenshots/CMPCachegrind.png"/>
 </p>
 
-This is 29% more optimized compared to the previous test! _God bless Intel twice_.
+This one is 29% more optimized compared to the previous test! _God bless Intel twice_.
 
 ### Inference
 
