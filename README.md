@@ -149,10 +149,10 @@ unsigned int CRC32 (Line* string) {
 Let's look at our acceleration:
 
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/CRCTime.png"/>
 </p>
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/CRCCache.png"/>
 </p>
 
 _God bless Intel: we got 80% optimization!_
@@ -249,10 +249,10 @@ void HashTableConstructor (HashTable* hashTable, size_t size, unsigned int (*has
 Let's keep our fingers crossed and take a look into _the callgrind_:
 
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/DictionaryTime.png"/>
 </p>
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/DictionaryTime.png"/>
 </p>
 
 It's hard to call it a success. The optimization is not satisfactory (~9%). I think that it's time to optimize the search for elements. One of the most important functions in the search process is _the LineCmp_. Let's take a look into the code:
@@ -314,10 +314,10 @@ int LineCmp (Line* firstLine, Line* secondLine) {
 The new value of the run-time is:
 
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/CMPTime.png"/>
 </p>
 <p align = "center">
-  <img src="https://github.com/Exactlywb/HashTable/blob/master/unoptimized/csv/CRC.png"/>
+  <img src="screenshots/CMPCachegrind.png"/>
 </p>
 
 This is 29% more optimized compared to the previous test! _God bless Intel twice_.
@@ -331,5 +331,5 @@ After all the steps taken, we reduced the program execution time from ~1.678s to
 Congratulations, colleagues. We have implemented the hash table, optimized it and got 2000$. 
 
 <p align = "center">
-  <img src = "https://lh3.googleusercontent.com/proxy/sZm9obAtopRDU5w18M-EY1mGwEljPtm4b9AoOszAxiRGUk-RemRTNw9KvzgEGSuJ7cALcsKN-RJIVcMYAI-oDJn7gxyYCykdyfhQkv1CrNx7LTJunKIWl-x-Kj4suEGaMk6JSLXEt_G-qnTxJrpa9mIJI3Tqrrojelc" width = "400" />
+  <img src = "screenshots/meme.jpg" width = "400" />
 </p>
